@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fundo1080"/>
+
+    <TextView
+        android:id="@+id/NomeEmpresa"
+        android:layout_width="246dp"
+        android:layout_height="49dp"
+        android:fontFamily="@font/allerta"
+        android:shadowColor="#004d41"
+        android:shadowRadius="7"
+        android:text="M.I.K.S.™"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#00A88F"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.050" />
+
+    <LinearLayout
+        android:layout_width="373dp"
+        android:layout_height="302dp"
+        android:background="@drawable/card_bg"
+        android:orientation="vertical"
+        android:padding="20dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/TextoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/allerta"
+            android:shadowColor="#004d41"
+            android:shadowRadius="7"
+            android:text="Bem-vindo de volta!"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#00A88F"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/EmailLogin"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/input_bg"
+            android:fontFamily="@font/allerta"
+
+            android:hint="Usuário"
+            android:paddingLeft="18dp"
+            android:textColor="#FFFFFF"
+
+            android:textColorHint="#A0F0E8"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp">
+
+            <EditText
+                android:id="@+id/SenhaLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/input_bg"
+
+                android:fontFamily="@font/allerta"
+
+                android:hint="Senha"
+                android:inputType="textPassword"
+
+                android:paddingLeft="18dp"
+                android:textColor="#FFFFFF"
+
+                android:textColorHint="#A0F0E8"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/MostrarSenha"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_eye"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/BotaoLogin"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/allerta"
+            android:text="Cadastrar"
+
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+
+        <TextView
+            android:id="@+id/Registrar"
+            android:layout_width="335dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/allerta"
+            android:shadowColor="#004d41"
+            android:shadowRadius="7"
+            android:text="Não possui conta? Registre-se"
+            android:textAlignment="center"
+            android:textColor="#00A88F"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
