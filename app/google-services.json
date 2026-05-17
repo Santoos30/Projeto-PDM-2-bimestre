@@ -7,50 +7,25 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:452578010394:android:08cf8785732b853eb9f8a3",
-        "android_client_info": {
-          "package_name": "com.santoos30.projeto2bimestre"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCHGeyoUjsz7_bPGhOUctqhITXdpcEptVs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:452578010394:android:b8474986663fcae6b9f8a3",
-        "android_client_info": {
-          "package_name": "com.santoos30.projetologin2bi"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCHGeyoUjsz7_bPGhOUctqhITXdpcEptVs"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:452578010394:android:be4b4e27bd7c122cb9f8a3",
         "android_client_info": {
           "package_name": "com.santoos30.spotifyapi2bi"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "452578010394-iq3t3mceget1tbbvceku367sbf06o8ul.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.santoos30.spotifyapi2bi",
+            "certificate_hash": "e99a540cd47c2511110971cbfd521557f4e3897a"
+          }
+        },
+        {
+          "client_id": "452578010394-pti57fmtbb9108ttjjmjpbjb735p7pug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCHGeyoUjsz7_bPGhOUctqhITXdpcEptVs"
@@ -58,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452578010394-pti57fmtbb9108ttjjmjpbjb735p7pug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

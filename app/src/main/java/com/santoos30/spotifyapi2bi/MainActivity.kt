@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import androidx.credentials.GetCredentialRequest
+import com.google.android.libraries.identity.googleid.GetGoogleIdOption
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -43,6 +45,15 @@ class MainActivity : AppCompatActivity() {
             val Senha = GlobalEtSenha.text.toString().trim()
             Entrar(Email, Senha)
         }
+
+        val googleIdOption = GetGoogleIdOption.Builder()
+            .setServerClientId(getString(R.string.default_web_client_id))
+            .setFilterByAuthorizedAccounts(false)
+            .build()
+
+        val request = GetCredentialRequest.Builder()
+            .addCredentialOption(googleIdOption)
+            .build()
 
         Olho.setOnClickListener {
             GlobalSenhaVisivel = !GlobalSenhaVisivel
