@@ -6,14 +6,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fundo1080" />
+        android:src="@drawable/fundo1080"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="160dp" />
+
 
     <TextView
         android:id="@+id/NomeEmpresa"
@@ -36,26 +38,27 @@
         app:layout_constraintVertical_bias="0.050" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="373dp"
         android:layout_height="302dp"
         android:background="@drawable/card_bg"
         android:orientation="vertical"
-        android:padding="20dp"
 
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/TextoLogin"
+            android:id="@+id/TextoRegis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:fontFamily="@font/allerta"
             android:shadowColor="#004d41"
             android:shadowRadius="7"
-            android:text="Bem-vindo de volta!"
+            android:text="Seja bem-vindo!"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#00A88F"
@@ -63,7 +66,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/EmailLogin"
+            android:id="@+id/EmailRegis"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/input_bg"
@@ -82,7 +85,7 @@
             android:layout_marginBottom="15dp">
 
             <EditText
-                android:id="@+id/SenhaLogin"
+                android:id="@+id/SenhaRegis"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -106,17 +109,19 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="22dp"
                 android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_eye"/>
+                android:src="@drawable/ic_eye" />
         </RelativeLayout>
 
+        <!-- BOTAO -->
+
         <Button
-            android:id="@+id/BotaoLogin"
+            android:id="@+id/BotaoRegis"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/allerta"
-            android:text="Entrar"
+            android:text="Cadastrar"
 
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
@@ -125,7 +130,7 @@
             app:backgroundTint="@null" />
 
         <TextView
-            android:id="@+id/Registrar"
+            android:id="@+id/Logar"
             android:layout_width="335dp"
             android:layout_height="34dp"
             android:layout_marginTop="5dp"
@@ -134,13 +139,26 @@
             android:fontFamily="@font/allerta"
             android:shadowColor="#004d41"
             android:shadowRadius="7"
-            android:text="Não possui conta? Registre-se"
+            android:text="Ja tem conta? Faça Login"
             android:textAlignment="center"
             android:textColor="#00A88F"
             android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/LoginGoogle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/google_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.03" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

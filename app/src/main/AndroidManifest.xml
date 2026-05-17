@@ -6,16 +6,31 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:label="@string/app_name"
         android:icon="@mipmap/miks_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/miks_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotifyAPI2bi">
         <activity
-            android:name=".MainActivity2"
+            android:name=".GetAtvActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PostAtvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetCrianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostCrianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
