@@ -1,10 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetCrianActivity">
+    tools:context=".PostCrianActivity">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fundo1080" />
+
+    <ImageView
+        android:id="@+id/BarraSuperior"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="#1E1E1E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="52dp"
+        android:layout_height="49dp"
+        android:drawableTop="@drawable/voltar"
+        android:gravity="center"
+        android:paddingRight="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
+        app:layout_constraintVertical_bias="0.792" />
+
+    <TextView
+        android:id="@+id/NomeTela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/allerta"
+        android:shadowColor="#004d41"
+        android:shadowRadius="7"
+        android:text="Listar Crianças"
+        android:textAlignment="center"
+        android:textColor="#00A88F"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/BarraSuperior"
+        app:layout_constraintVertical_bias="0.792" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/card_bg"
+        android:orientation="vertical"
+
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/BarraSuperior"
+        app:layout_constraintVertical_bias="0.466">
+
+            <TableLayout
+                android:id="@+id/tabelaCriancas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <!-- CABEÇALHO -->
+                <TableRow>
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="ID"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="Nome"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="Idade"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="Leitura"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="Math"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+            </TableLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

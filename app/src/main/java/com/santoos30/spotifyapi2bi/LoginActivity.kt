@@ -94,9 +94,13 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
-                    Toast.makeText(this, "${user?.email}, entrou com sucesso.",
-                        Toast.LENGTH_SHORT ).show()
-                } else {
+                    Toast.makeText(
+                        this, "${user?.email}, entrou com sucesso.",
+                        Toast.LENGTH_SHORT).show()
+                    val telaHome = Intent(this, HomeActivity::class.java)
+                    startActivity(telaHome)
+                    finish()
+                }else {
                     Toast.makeText(this, "Erro ao entrar, ${task.exception?.message}",
                         Toast.LENGTH_SHORT).show()
                 }
@@ -119,6 +123,9 @@ class LoginActivity : AppCompatActivity() {
                             val user = FirebaseAuth.getInstance().currentUser
                             Toast.makeText( this, "${user?.email} entrou pelo Google com sucesso.",
                                 Toast.LENGTH_SHORT).show()
+                            val telaHome = Intent(this, HomeActivity::class.java)
+                            startActivity(telaHome)
+                            finish()
                         } else {
                             Toast.makeText(this, "Erro ao entrar com Google",
                                 Toast.LENGTH_SHORT ).show()

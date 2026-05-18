@@ -5,6 +5,78 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fundo_miks"
     tools:context=".HomeActivity">
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/fundo1080" />
+
+
+    <Button
+        android:id="@+id/btnVoltar"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="52dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="36dp"
+        android:drawableTop="@drawable/voltar"
+        android:gravity="center"
+        android:paddingRight="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.792"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/CriarCrian"
+        android:layout_width="137dp"
+        android:layout_height="46dp"
+        android:text="Criar Criança"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
+
+    <Button
+        android:id="@+id/ListarCrian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listar Criança"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.383" />
+
+    <Button
+        android:id="@+id/CriarAtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criar Atividade"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/ListarAtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Listar Atividade"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.821"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
