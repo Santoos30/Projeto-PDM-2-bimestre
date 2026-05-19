@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PostCrianActivity">
+    android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/fundo1080" />
+        android:src="@drawable/fundo1080"/>
 
     <ImageView
         android:id="@+id/BarraSuperior"
@@ -31,9 +29,7 @@
         android:drawableTop="@drawable/voltar"
         android:gravity="center"
         android:paddingRight="8dp"
-
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792"
@@ -44,9 +40,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/allerta"
-        android:shadowColor="#1E1E1E"
+        android:shadowColor="#004d41"
         android:shadowRadius="7"
-        android:text="Cadastrar Crianças"
+        android:text="Buscar Música"
         android:textAlignment="center"
         android:textColor="#00A88F"
         android:textSize="28sp"
@@ -59,93 +55,82 @@
         app:layout_constraintVertical_bias="0.792" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="374dp"
-        android:layout_height="345dp"
-        android:background="@drawable/card_bg"
+        android:layout_width="355dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-
         android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/card_bg"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.555">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <ImageView
+            android:id="@+id/imgAlbum"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/txtNome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome"
+            android:fontFamily="@font/allerta"
+            android:shadowColor="#004d41"
+            android:shadowRadius="7"
+            android:textColor="#00A88F"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/txtArtista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:shadowColor="#004d41"
+            android:shadowRadius="7"
+            android:fontFamily="@font/allerta"
+            android:text="Artista"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
 
         <EditText
-            android:id="@+id/NomeCrianca"
+            android:id="@+id/editPesquisa"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/input_bg"
+            android:hint="Pesquisar Música"
             android:fontFamily="@font/allerta"
-            android:hint="Nome"
-            android:paddingLeft="18dp"
-            android:textColor="#FFFFFF"
-
-            android:textColorHint="#A0F0E8"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/IdadeCrianca"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/input_bg"
-            android:fontFamily="@font/allerta"
-            android:hint="Idade"
-            android:paddingLeft="18dp"
             android:textColor="#FFFFFF"
-
             android:textColorHint="#A0F0E8"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/NivelLeitura"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/input_bg"
-            android:fontFamily="@font/allerta"
-            android:hint="Nivel Leitura"
-            android:paddingLeft="18dp"
-            android:textColor="#FFFFFF"
-
-            android:textColorHint="#A0F0E8"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/NivelMatematica"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/input_bg"
-            android:fontFamily="@font/allerta"
-            android:hint="Nivel Matemática"
-            android:paddingLeft="18dp"
-            android:textColor="#FFFFFF"
-
-            android:textColorHint="#A0F0E8"
-            android:textStyle="bold" />
-
+            android:paddingLeft="18dp"/>
 
         <Button
+            android:id="@+id/btnBuscar"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Buscar"
+            android:fontFamily="@font/allerta"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/button_bg"
+            app:backgroundTint="@null"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
 
-            android:id="@+id/BotaoSalvar"
+        <Button
+            android:id="@+id/btnPlay"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_bg"
-            android:fontFamily="@font/allerta"
-            android:text="Salvar"
-
-            android:textAllCaps="false"
+            android:text="Ouvir prévia"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:backgroundTint="@null" />
+            android:fontFamily="@font/allerta"
+            app:backgroundTint="@null"/>
 
     </LinearLayout>
 

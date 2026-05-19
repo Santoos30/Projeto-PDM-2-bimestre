@@ -3,20 +3,20 @@ package com.santoos30.spotifyapi2bi
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
-        val BtnTela4 = findViewById<Button>(R.id.CriarCrian)
-        val BtnTela3 = findViewById<Button>(R.id.ListarCrian)
-        val BtnTela2 = findViewById<Button>(R.id.CriarAtv)
-        val BtnTela1 = findViewById<Button>(R.id.ListarAtv)
+        val BtnTela4 = findViewById<ImageView>(R.id.PostCriancas)
+        val BtnTela3 = findViewById<ImageView>(R.id.GetCriancas)
+        val BtnTela2 = findViewById<ImageView>(R.id.PostAtividades)
+        val BtnTela1 = findViewById<ImageView>(R.id.GetAtividades)
+        val BtnTela0 = findViewById<ImageView>(R.id.btnSpotify)
 
         BtnTela4.setOnClickListener {
             val Tela4 = Intent(this, PostCrianActivity::class.java)
@@ -36,6 +36,11 @@ class HomeActivity : AppCompatActivity() {
         BtnTela1.setOnClickListener {
             val Tela1 = Intent(this, GetAtvActivity::class.java)
             startActivity (Tela1)
+        }
+
+        BtnTela0.setOnClickListener {
+            val Tela0 = Intent(this, SpotifyActivity::class.java)
+            startActivity (Tela0)
         }
     }
 }
