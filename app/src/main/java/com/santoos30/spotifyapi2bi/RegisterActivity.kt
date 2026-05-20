@@ -9,7 +9,6 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import androidx.credentials.GetCredentialRequest
 import com.google.android.libraries.identity.googleid.GetGoogleIdOption
@@ -55,8 +54,9 @@ class RegisterActivity : AppCompatActivity() {
                     val result = credentialManager.getCredential(request = request, context = this@RegisterActivity)
                     handleSignIn(result)
                 } catch (e: Exception) {
-                    Toast.makeText(this@RegisterActivity, "Erro do Google: ${e.message}",
-                        Toast.LENGTH_SHORT ).show()
+                    mostrarMensagem(
+                        "Erro do Google: $e!"
+                    )
                 }
             }
         }
@@ -64,11 +64,28 @@ class RegisterActivity : AppCompatActivity() {
         Login.setOnClickListener {
             val TelaEntrada = Intent(this, LoginActivity::class.java)
             startActivity(TelaEntrada)
+            overridePendingTransition(0, 0)
         }
 
         GlobalBtnRegis.setOnClickListener {
             val email = GlobalEtEmail.text.toString().trim()
             val password = GlobalEtSenha.text.toString().trim()
+            if (email.isEmpty() || password.isEmpty()) {
+                mostrarMensagem(
+                    "Preencha todos os campos!"
+                )
+                return@setOnClickListener
+            }
+            if (
+                !android.util.Patterns.EMAIL_ADDRESS
+                    .matcher(email)
+                    .matches()
+            ) {
+                mostrarMensagem(
+                    "Digite um email válido!"
+                )
+                return@setOnClickListener
+            }
             Cadastrar(email, password)
         }
 
@@ -85,18 +102,57 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    private fun mostrarMensagem(mensagem: String) {
+
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_mensagem,
+            null
+        )
+
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(
+            android.R.color.transparent
+        )
+
+        dialog.show()
+
+        val txtMensagem =
+            dialogView.findViewById<TextView>(
+                R.id.txtMensagemDialog
+            )
+
+        val btnOk =
+            dialogView.findViewById<Button>(
+                R.id.btnOkDialog
+            )
+
+        txtMensagem.text = mensagem
+
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+
+
     fun Cadastrar(email: String, password: String) {
         val auth = FirebaseAuth.getInstance()
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(this, "${user?.email}, cadastrado com sucesso.",
-                        Toast.LENGTH_SHORT).show()
+                    val telaHome = Intent(this, HomeActivity::class.java)
+                    startActivity(telaHome)
+                    finish()
+                    overridePendingTransition(
+                        R.anim.slide_in,
+                        R.anim.slide_out
+                    )
                 } else {
-                    // Falha no registro
-                    Toast.makeText(this, "Erro ao Cadastrar, ${task.exception?.message}",
-                        Toast.LENGTH_SHORT).show()
+                    mostrarMensagem(
+                        "Erro ao cadastrar:\n${task.exception?.message}"
+                    )
                 }
             }
     }
@@ -115,16 +171,26 @@ class RegisterActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val user = FirebaseAuth.getInstance().currentUser
-                            Toast.makeText( this, "${user?.email} entrou pelo Google com sucesso.",
-                                Toast.LENGTH_SHORT).show()
+                            mostrarMensagem(
+                                "${user?.email} entrou pelo Google com sucesso."
+                            )
+                            val telaHome = Intent(this, HomeActivity::class.java)
+                            startActivity(telaHome)
+                            finish()
+                            overridePendingTransition(
+                                R.anim.slide_in,
+                                R.anim.slide_out
+                            )
                         } else {
-                            Toast.makeText(this, "Erro ao entrar com Google",
-                                Toast.LENGTH_SHORT ).show()
+                            mostrarMensagem(
+                                "Erro ao entrar com Google."
+                            )
                         }
                     }
             } catch (e: GoogleIdTokenParsingException) {
-                Toast.makeText(this, "Erro de Token Google: $e",
-                    Toast.LENGTH_SHORT ).show()
+                mostrarMensagem(
+                    "Erro de Token Google."
+                )
             }
         }
     }

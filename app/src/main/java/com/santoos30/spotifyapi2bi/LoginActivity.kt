@@ -9,7 +9,6 @@ import android.text.method.PasswordTransformationMethod
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import androidx.credentials.GetCredentialRequest
@@ -22,6 +21,7 @@ import kotlinx.coroutines.launch
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.google.android.libraries.identity.googleid.GoogleIdTokenParsingException
 import com.google.firebase.auth.GoogleAuthProvider
+import androidx.appcompat.app.AlertDialog
 
 class LoginActivity : AppCompatActivity() {
     private var GlobalSenhaVisivel = false
@@ -38,19 +38,64 @@ class LoginActivity : AppCompatActivity() {
         GlobalEtSenha = findViewById(R.id.SenhaLogin)
         GlobalBtnLogin = findViewById(R.id.BotaoLogin)
 
+        val txtEsqueciSenha = findViewById<TextView>(R.id.txtEsqueciSenha)
         val Olho = findViewById<ImageView>(R.id.MostrarSenha)
         val Regis = findViewById<TextView>(R.id.Registrar)
+
         val credentialManager = CredentialManager.create(this)
         val BtnGoogle = findViewById<ImageView>(R.id.LoginGoogle)
-
         val googleIdOption = GetGoogleIdOption.Builder()
             .setServerClientId(getString(R.string.default_web_client_id))
             .setFilterByAuthorizedAccounts(false)
             .build()
-
         val request = GetCredentialRequest.Builder()
             .addCredentialOption(googleIdOption)
             .build()
+        txtEsqueciSenha.setOnClickListener {
+            val dialogView = layoutInflater.inflate(
+                R.layout.dialog_recuperar_senha,
+                null
+            )
+            val dialog = AlertDialog.Builder(this)
+                .setView(dialogView)
+                .create()
+            dialog.window?.setBackgroundDrawableResource(
+                android.R.color.transparent
+            )
+            dialog.show()
+            val editEmail =
+                dialogView.findViewById<EditText>(
+                    R.id.editEmailRecuperacao
+                )
+            val btnEnviar =
+                dialogView.findViewById<Button>(
+                    R.id.btnEnviarRecuperacao
+                )
+
+            btnEnviar.setOnClickListener {
+                val email = editEmail.text.toString().trim()
+                if (email.isEmpty()) {
+                    mostrarMensagem("Digite um email!")
+                    return@setOnClickListener
+                }
+                FirebaseAuth
+                    .getInstance()
+                    .sendPasswordResetEmail(email)
+                    .addOnCompleteListener {
+                        dialog.dismiss()
+                        if (it.isSuccessful) {
+                            dialog.dismiss()
+                            mostrarMensagem(
+                                "Verifique seu email para redefinir sua senha."
+                            )
+                        } else {
+                            mostrarMensagem(
+                                "Erro: ${it.exception?.message}"
+                            )
+                        }
+                    }
+            }
+        }
 
         BtnGoogle.setOnClickListener {
             lifecycleScope.launch {
@@ -58,15 +103,20 @@ class LoginActivity : AppCompatActivity() {
                     val result = credentialManager.getCredential(request = request, context = this@LoginActivity)
                     handleSignIn(result)
                 } catch (e: Exception) {
-                    Toast.makeText(this@LoginActivity, "Erro do Google: ${e.message}",
-                        Toast.LENGTH_SHORT ).show()
+                    mostrarMensagem(
+                        "Erro ao entrar com Google"
+                    )
                 }
             }
         }
 
         Regis.setOnClickListener {
             val TelaCadastro = Intent(this, RegisterActivity::class.java)
-            startActivity (TelaCadastro)
+            startActivity(TelaCadastro)
+            overridePendingTransition(
+                R.anim.slide_in,
+                R.anim.slide_out
+            )
         }
 
         GlobalBtnLogin.setOnClickListener {
@@ -88,21 +138,85 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun mostrarMensagem(mensagem: String) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_mensagem, null)
+        val dialog = AlertDialog.Builder(this).setView(dialogView).create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
+
+        val txtMensagem = dialogView.findViewById<TextView>(R.id.txtMensagemDialog)
+        val btnOk = dialogView.findViewById<Button>(R.id.btnOkDialog)
+
+        txtMensagem.text = mensagem
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+
     private fun Entrar(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            mostrarMensagem(
+                "Preencha todos os campos!"
+            )
+            return
+        }
         val auth = FirebaseAuth.getInstance()
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    Toast.makeText(
-                        this, "${user?.email}, entrou com sucesso.",
-                        Toast.LENGTH_SHORT).show()
-                    val telaHome = Intent(this, HomeActivity::class.java)
+                    val telaHome = Intent(
+                        this,
+                        HomeActivity::class.java
+                    )
                     startActivity(telaHome)
                     finish()
-                }else {
-                    Toast.makeText(this, "Erro ao entrar, ${task.exception?.message}",
-                        Toast.LENGTH_SHORT).show()
+                    overridePendingTransition(
+                        R.anim.slide_in,
+                        R.anim.slide_out
+                    )
+                } else {
+
+                    val mensagemErro = when {
+
+                        task.exception?.message?.contains(
+                            "badly formatted",
+                            ignoreCase = true
+                        ) == true -> {
+
+                            "O email digitado é inválido!"
+                        }
+
+                        task.exception?.message?.contains(
+                            "password is invalid",
+                            ignoreCase = true
+                        ) == true -> {
+
+                            "Senha incorreta!"
+                        }
+
+                        task.exception?.message?.contains(
+                            "no user record",
+                            ignoreCase = true
+                        ) == true -> {
+
+                            "Nenhuma conta encontrada com esse email!"
+                        }
+
+                        task.exception?.message?.contains(
+                            "network error",
+                            ignoreCase = true
+                        ) == true -> {
+
+                            "Sem conexão com a internet!"
+                        }
+
+                        else -> {
+
+                            "Erro ao entrar. Tente novamente!"
+                        }
+                    }
+
+                    mostrarMensagem(mensagemErro)
                 }
             }
     }
@@ -120,20 +234,23 @@ class LoginActivity : AppCompatActivity() {
                     .signInWithCredential(firebaseCredential)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val user = FirebaseAuth.getInstance().currentUser
-                            Toast.makeText( this, "${user?.email} entrou pelo Google com sucesso.",
-                                Toast.LENGTH_SHORT).show()
                             val telaHome = Intent(this, HomeActivity::class.java)
                             startActivity(telaHome)
                             finish()
+                            overridePendingTransition(
+                                R.anim.slide_in,
+                                R.anim.slide_out
+                            )
                         } else {
-                            Toast.makeText(this, "Erro ao entrar com Google",
-                                Toast.LENGTH_SHORT ).show()
+                            mostrarMensagem(
+                                "Erro ao entrar com Google"
+                            )
                         }
                     }
             } catch (e: GoogleIdTokenParsingException) {
-                Toast.makeText(this, "Erro de Token Google",
-                    Toast.LENGTH_SHORT ).show()
+                mostrarMensagem(
+                    "Erro de Token Google"
+                )
             }
         }
     }

@@ -3,6 +3,7 @@ package com.santoos30.spotifyapi2bi
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,7 +25,7 @@ class PostCrianActivity : AppCompatActivity() {
         val inputIdd = findViewById<EditText>(R.id.IdadeCrianca)
         val inputLeitura = findViewById<EditText>(R.id.NivelLeitura)
         val inputMath = findViewById<EditText>(R.id.NivelMatematica)
-        val btnVoltar = findViewById<Button>(R.id.btnVoltar)
+        val btnVoltar = findViewById<ImageView>(R.id.btnVoltar)
         database = FirebaseDatabase.getInstance()
 
         btnSalvar.setOnClickListener {

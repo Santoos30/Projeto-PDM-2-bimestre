@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/card_bg2">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recuperar Senha"
+        android:textColor="#A0F0E8"
+        android:shadowColor="#004d41"
+        android:shadowRadius="7"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/allerta"/>
+
+    <EditText
+        android:id="@+id/editEmailRecuperacao"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/input_bg"
+        android:hint="Digite seu email"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#A0F0E8"
+        android:paddingLeft="18dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/allerta"/>
+
+    <Button
+        android:id="@+id/btnEnviarRecuperacao"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="Enviar"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/allerta"/>
+</LinearLayout>

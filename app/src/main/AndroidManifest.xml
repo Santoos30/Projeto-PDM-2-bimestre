@@ -13,27 +13,8 @@
         android:roundIcon="@mipmap/miks_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotifyAPI2bi">
-        <activity
-            android:name=".GetAtvActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SpotifyActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PostAtvActivity"
-            android:exported="false" />
-        <activity
-            android:name=".GetCrianActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PostCrianActivity"
-            android:exported="false" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
+
+
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -43,6 +24,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".GetCrianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostCrianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostAtvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FazerAtvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GetAtvActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoricoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SpotifyActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

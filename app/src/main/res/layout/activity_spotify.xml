@@ -17,18 +17,17 @@
         android:layout_width="0dp"
         android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+
+    <ImageView
         android:id="@+id/btnVoltar"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="52dp"
         android:layout_height="49dp"
-        android:drawableTop="@drawable/voltar"
+        android:src="@drawable/voltar"
         android:gravity="center"
-        android:paddingRight="8dp"
+        android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
@@ -42,14 +41,13 @@
         android:fontFamily="@font/allerta"
         android:shadowColor="#004d41"
         android:shadowRadius="7"
-        android:text="Buscar Música"
+        android:text="Buscar Músicas"
         android:textAlignment="center"
         android:textColor="#00A88F"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792" />
@@ -97,6 +95,35 @@
             android:textColor="#FFFFFF"
             android:textSize="18sp"/>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/PularDir"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/direita" />
+
+            <ImageView
+                android:id="@+id/btnPlay"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/play" />
+
+            <ImageView
+                android:id="@+id/PularEsq"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/esquerda" />
+
+        </LinearLayout>
+
         <EditText
             android:id="@+id/editPesquisa"
             android:layout_width="match_parent"
@@ -107,6 +134,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#A0F0E8"
             android:paddingLeft="18dp"/>
+
 
         <Button
             android:id="@+id/btnBuscar"
@@ -119,18 +147,6 @@
             app:backgroundTint="@null"
             android:textColor="@color/white"
             android:textSize="20sp"/>
-
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:text="Ouvir prévia"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:fontFamily="@font/allerta"
-            app:backgroundTint="@null"/>
 
     </LinearLayout>
 

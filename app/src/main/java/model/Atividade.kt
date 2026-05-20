@@ -5,4 +5,5 @@ data class Atividade(
     var tipo: String? = null,
     var titulo: String? = null,
     var dificuldade: String? = null,
+    var respostaCorreta: String? = null
 )

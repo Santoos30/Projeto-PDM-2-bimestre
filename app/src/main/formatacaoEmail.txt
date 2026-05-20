@@ -1,0 +1,17 @@
+https://www.w3schools.com/html/tryit.asp?filename=tryhtml_editor
+<link href="https://fonts.googleapis.com/css2?family=Allerta&display=swap" rel="stylesheet">
+
+<h4 style="font-family: Allerta;">Recebemos uma solicitação para redefinir a senha da sua conta.<br>
+Mas relaxa! Basta clicar no botão abaixo para criar uma nova senha e voltar para o
+<span style=" background: linear-gradient(90deg, #16E790, #004237);
+-webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight:bold;">
+M.I.K.S </span>.</h4>
+<h3> <a href='%LINK%' style=" font-family: Allerta;
+background: linear-gradient(90deg, #16E790, #004237);
+color:white; padding:14px 22px; text-decoration:none;
+border-radius:14px; display:inline-block; font-weight:bold;">
+Redefinir senha</a></h3>
+
+<h4 style="font-family:Allerta;">
+Se você não solicitou a redefinição de senha, pode ignorar este email com segurança.<br>
+Com gratidão,<br> Equipe %APP_NAME% </h4>

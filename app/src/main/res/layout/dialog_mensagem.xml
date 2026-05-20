@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/card_bg2">
+
+    <TextView
+        android:id="@+id/txtMensagemDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensagem"
+        android:textColor="#A0F0E8"
+        android:fontFamily="@font/allerta"
+        android:shadowColor="#004d41"
+        android:shadowRadius="7"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/btnOkDialog"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="OK"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_bg"
+        app:backgroundTint="@null"
+        android:fontFamily="@font/allerta"/>
+</LinearLayout>

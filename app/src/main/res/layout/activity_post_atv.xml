@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PostCrianActivity">
+    android:layout_height="match_parent">
 
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
@@ -19,21 +15,18 @@
         android:layout_width="0dp"
         android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+
+    <ImageView
         android:id="@+id/btnVoltar"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="52dp"
         android:layout_height="49dp"
-        android:drawableTop="@drawable/voltar"
+        android:src="@drawable/voltar"
         android:gravity="center"
-        android:paddingRight="8dp"
-
+        android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792"
@@ -46,33 +39,41 @@
         android:fontFamily="@font/allerta"
         android:shadowColor="#004d41"
         android:shadowRadius="7"
-        android:text="Criar Atividade"
+        android:text="Criar Atividades"
         android:textAlignment="center"
         android:textColor="#00A88F"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="359dp"
-        android:layout_height="287dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/card_bg"
         android:orientation="vertical"
-
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.555">
+        app:layout_constraintVertical_bias="0.55">
 
+        <EditText
+            android:id="@+id/MateriaAtv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:fontFamily="@font/allerta"
+            android:hint="Matéria"
+            android:paddingLeft="18dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#A0F0E8"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/TituloAtv"
@@ -81,24 +82,9 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/input_bg"
             android:fontFamily="@font/allerta"
-            android:hint="Titulo"
+            android:hint="Título da atividade"
             android:paddingLeft="18dp"
             android:textColor="#FFFFFF"
-
-            android:textColorHint="#A0F0E8"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/TipoAtv"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/input_bg"
-            android:fontFamily="@font/allerta"
-            android:hint="Tipo"
-            android:paddingLeft="18dp"
-            android:textColor="#FFFFFF"
-
             android:textColorHint="#A0F0E8"
             android:textStyle="bold" />
 
@@ -109,27 +95,38 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/input_bg"
             android:fontFamily="@font/allerta"
-            android:hint="Dificuldade"
+            android:hint="Dificuldade (Fácil, Médio, Difícil)"
             android:paddingLeft="18dp"
             android:textColor="#FFFFFF"
+            android:textColorHint="#A0F0E8"
+            android:textStyle="bold" />
 
+        <!-- CAMPO NOVO -->
+        <EditText
+            android:id="@+id/RespostaAtv"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_bg"
+            android:fontFamily="@font/allerta"
+            android:hint="Resposta correta"
+            android:paddingLeft="18dp"
+            android:textColor="#FFFFFF"
             android:textColorHint="#A0F0E8"
             android:textStyle="bold" />
 
         <Button
-
             android:id="@+id/CriarAtv"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/allerta"
             android:text="Salvar"
-
             android:textAllCaps="false"
-            android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/white"
             app:backgroundTint="@null" />
 
     </LinearLayout>

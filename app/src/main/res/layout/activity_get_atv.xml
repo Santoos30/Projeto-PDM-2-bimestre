@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetAtvActivity">
+    tools:context=".PostCrianActivity">
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gifImageView"
@@ -20,21 +20,18 @@
         android:layout_width="0dp"
         android:layout_height="90dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+
+    <ImageView
         android:id="@+id/btnVoltar"
-        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="52dp"
         android:layout_height="49dp"
-        android:drawableTop="@drawable/voltar"
+        android:src="@drawable/voltar"
         android:gravity="center"
-        android:paddingRight="8dp"
-
+        android:paddingLeft="15dp"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792"
@@ -54,7 +51,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/BarraSuperior"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/BarraSuperior"
         app:layout_constraintVertical_bias="0.792" />
@@ -90,6 +86,7 @@
 
                 <!-- CABEÇALHO -->
                 <TableRow>
+
                     <TextView
                         android:padding="8dp"
                         android:shadowColor="#004d41"
@@ -104,8 +101,8 @@
                         android:padding="8dp"
                         android:shadowColor="#004d41"
                         android:shadowRadius="7"
+                        android:text="Nome"
                         android:textAlignment="center"
-                        android:text="Título"
                         android:textColor="#00A88F"
                         android:textSize="23sp"
                         android:textStyle="bold" />
@@ -115,7 +112,7 @@
                         android:shadowColor="#004d41"
                         android:shadowRadius="7"
                         android:textAlignment="center"
-                        android:text="Tipo"
+                        android:text="Idade"
                         android:textColor="#00A88F"
                         android:textSize="23sp"
                         android:textStyle="bold" />
@@ -126,9 +123,20 @@
                         android:shadowRadius="7"
                         android:text="Dificuldade"
                         android:textColor="#00A88F"
-                        android:textAlignment="center"
                         android:textSize="23sp"
+                        android:textAlignment="center"
                         android:textStyle="bold" />
+
+                    <TextView
+                        android:padding="8dp"
+                        android:shadowColor="#004d41"
+                        android:shadowRadius="7"
+                        android:text="Resp. Certa"
+                        android:textColor="#00A88F"
+                        android:textSize="23sp"
+                        android:textAlignment="center"
+                        android:textStyle="bold" />
+
                 </TableRow>
             </TableLayout>
         </HorizontalScrollView>

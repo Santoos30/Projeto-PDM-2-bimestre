@@ -7,18 +7,18 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import spotify.RetrofitInstance
+import androidx.appcompat.app.AlertDialog
 import spotify.SpotifyResponse
 
 class SpotifyActivity : AppCompatActivity() {
 
-    private lateinit var btnPlay: Button
+    private lateinit var btnPlay: ImageView
     private var spotifyUrl: String? = null
 
     private lateinit var txtNome: TextView
@@ -26,7 +26,22 @@ class SpotifyActivity : AppCompatActivity() {
     private lateinit var imgAlbum: ImageView
     private lateinit var editPesquisa: EditText
     private lateinit var btnBuscar: Button
-    private lateinit var btnVoltar: Button
+    private lateinit var btnVoltar: ImageView
+
+    private fun mostrarMensagem(mensagem: String) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_mensagem, null)
+        val dialog = AlertDialog.Builder(this).setView(dialogView).create()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
+
+        val txtMensagem = dialogView.findViewById<TextView>(R.id.txtMensagemDialog)
+        val btnOk = dialogView.findViewById<Button>(R.id.btnOkDialog)
+
+        txtMensagem.text = mensagem
+        btnOk.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +55,7 @@ class SpotifyActivity : AppCompatActivity() {
         btnVoltar = findViewById(R.id.btnVoltar)
         btnPlay = findViewById(R.id.btnPlay)
 
-        // Botão começa desabilitado até buscar uma música
         btnPlay.isEnabled = false
-        btnPlay.text = "Abrir no Spotify"
 
         btnVoltar.setOnClickListener {
             finish()
@@ -52,7 +65,7 @@ class SpotifyActivity : AppCompatActivity() {
             val musica = editPesquisa.text.toString()
 
             if (musica.isEmpty()) {
-                Toast.makeText(this, "Digite uma música!", Toast.LENGTH_SHORT).show()
+                mostrarMensagem("Digite uma música!")
                 return@setOnClickListener
             }
 
@@ -61,26 +74,24 @@ class SpotifyActivity : AppCompatActivity() {
                     buscarMusica(token, musica)
                 } else {
                     runOnUiThread {
-                        Toast.makeText(this, "Erro ao gerar token!", Toast.LENGTH_SHORT).show()
+                        mostrarMensagem("Erro ao gerar token!")
                     }
                 }
             }
         }
 
-        // Abre o link no app do Spotify (ou no navegador se não tiver instalado)
         btnPlay.setOnClickListener {
             if (spotifyUrl != null) {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(spotifyUrl))
-                intent.setPackage("com.spotify.music") // tenta abrir no app
+                intent.setPackage("com.spotify.music")
 
-                // Se o app do Spotify não estiver instalado, abre no navegador
                 if (intent.resolveActivity(packageManager) != null) {
                     startActivity(intent)
                 } else {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(spotifyUrl)))
                 }
             } else {
-                Toast.makeText(this, "Busque uma música primeiro!", Toast.LENGTH_SHORT).show()
+                mostrarMensagem("Busque uma música primeiro!")
             }
         }
     }
@@ -100,11 +111,7 @@ class SpotifyActivity : AppCompatActivity() {
 
                     runOnUiThread {
                         if (track == null) {
-                            Toast.makeText(
-                                this@SpotifyActivity,
-                                "Nenhuma música encontrada!",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                           mostrarMensagem("Nenhuma música encontrada!",)
                             return@runOnUiThread
                         }
 
@@ -118,26 +125,17 @@ class SpotifyActivity : AppCompatActivity() {
                         spotifyUrl = track.external_urls.spotify
 
                         btnPlay.isEnabled = true
-                        btnPlay.text = "Abrir no Spotify"
                     }
                 } else {
                     runOnUiThread {
-                        Toast.makeText(
-                            this@SpotifyActivity,
-                            "Música não encontrada!",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        mostrarMensagem("Música não encontrada!")
                     }
                 }
             }
 
             override fun onFailure(call: Call<SpotifyResponse>, t: Throwable) {
                 runOnUiThread {
-                    Toast.makeText(
-                        this@SpotifyActivity,
-                        "Erro: ${t.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    mostrarMensagem("Erro: $t")
                 }
             }
         })

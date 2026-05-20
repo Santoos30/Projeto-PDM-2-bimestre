@@ -38,7 +38,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="373dp"
-        android:layout_height="302dp"
+        android:layout_height="320dp"
         android:background="@drawable/card_bg"
         android:orientation="vertical"
 
@@ -88,15 +88,11 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/input_bg"
-
                 android:fontFamily="@font/allerta"
-
                 android:hint="Senha"
                 android:inputType="textPassword"
-
                 android:paddingLeft="18dp"
                 android:textColor="#FFFFFF"
-
                 android:textColorHint="#A0F0E8"
                 android:textStyle="bold" />
 
@@ -108,17 +104,33 @@
                 android:layout_marginTop="22dp"
                 android:layout_marginEnd="12dp"
                 android:src="@drawable/ic_eye" />
+
+            <TextView
+                android:id="@+id/txtEsqueciSenha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/SenhaLogin"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/allerta"
+                android:clickable="true"
+                android:focusable="true"
+                android:shadowColor="#004d41"
+                android:shadowRadius="7"
+                android:text="Esqueci minha senha"
+                android:textColor="#00A88F"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
         </RelativeLayout>
 
         <Button
             android:id="@+id/BotaoLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_marginTop="5dp"
             android:background="@drawable/button_bg"
             android:fontFamily="@font/allerta"
             android:text="Entrar"
-
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
