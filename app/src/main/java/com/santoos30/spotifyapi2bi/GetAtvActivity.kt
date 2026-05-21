@@ -15,13 +15,9 @@ class GetAtvActivity : AppCompatActivity() {
     private lateinit var database: FirebaseDatabase
     private lateinit var tabelaAtividades: TableLayout
 
-    private fun mostrarMensagem(
-        mensagem: String
-    ) {
+    private fun mostrarMensagem(mensagem: String) {
         val dialogView = layoutInflater.inflate(R.layout.dialog_mensagem, null)
-        val dialog = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .create()
+        val dialog = AlertDialog.Builder(this).setView(dialogView).create()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
 
@@ -29,7 +25,6 @@ class GetAtvActivity : AppCompatActivity() {
         val btnOk = dialogView.findViewById<Button>(R.id.btnOkDialog)
 
         txtMensagem.text = mensagem
-
         btnOk.setOnClickListener {
             dialog.dismiss()
         }
@@ -39,46 +34,29 @@ class GetAtvActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_get_atv)
-
         database = FirebaseDatabase.getInstance()
-
         tabelaAtividades = findViewById(R.id.tabelaAtividades)
-
         val btnVoltar = findViewById<ImageView>(R.id.btnVoltar)
 
-        database.getReference("atividades")
-            .addValueEventListener(object : ValueEventListener {
+        database.getReference("atividades").addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-
                     if (tabelaAtividades.childCount > 1) {
-                        tabelaAtividades.removeViews(
-                            1,
-                            tabelaAtividades.childCount - 1
-                        )
+                        tabelaAtividades.removeViews(1, tabelaAtividades.childCount - 1)
                     }
 
                     for (item in snapshot.children) {
                         val atividade = item.getValue(Atividade::class.java)
                         val row = TableRow(this@GetAtvActivity)
+
                         fun criarTextView(texto: String): TextView {
                             return TextView(this@GetAtvActivity).apply {
                                 text = texto
                                 setPadding(12, 8, 12, 8)
                                 textSize = 18f
-                                typeface = ResourcesCompat.getFont(
-                                    context,
-                                    R.font.allerta
-                                )
+                                typeface = ResourcesCompat.getFont(context, R.font.allerta)
                                 paint.isFakeBoldText = true
-                                setTextColor(
-                                    Color.parseColor("#00A88F")
-                                )
-                                setShadowLayer(
-                                    7f,
-                                    0f,
-                                    0f,
-                                    Color.parseColor("#004d41")
-                                )
+                                setTextColor(Color.parseColor("#00A88F"))
+                                setShadowLayer(7f, 0f, 0f, Color.parseColor("#004d41"))
                                 gravity = Gravity.CENTER
                                 setSingleLine(true)
                             }
@@ -108,21 +86,13 @@ class GetAtvActivity : AppCompatActivity() {
                         val btnExcluir = TextView(this@GetAtvActivity)
                         btnExcluir.text = "X"
                         btnExcluir.textSize = 20f
-
                         btnExcluir.setTextColor(Color.parseColor("#FF4C4C"))
-
                         btnExcluir.setPadding(12, 8, 12, 8)
+
                         btnExcluir.setOnClickListener {
-                            atividade?.id?.let { id ->
-
-                                database
-                                    .getReference("atividades")
-                                    .child(id)
-                                    .removeValue()
-
-                                mostrarMensagem(
-                                    "Atividade removida!"
-                                )
+                            atividade?.id?.let {
+                                    id -> database.getReference("atividades").child(id).removeValue()
+                                mostrarMensagem("Atividade removida!")
                             }
                         }
 
@@ -130,19 +100,12 @@ class GetAtvActivity : AppCompatActivity() {
                         btnEditar.text = "✐"
                         btnEditar.textSize = 20f
                         btnEditar.setTextColor(Color.parseColor("#FFC107"))
-
                         btnEditar.setPadding(12, 8, 12, 8)
+
                         btnEditar.setOnClickListener {
-                            val dialogView = layoutInflater.inflate(
-                                R.layout.dialog_editar_atv,
-                                null
-                            )
-                            val dialog = AlertDialog.Builder(this@GetAtvActivity)
-                                .setView(dialogView)
-                                .create()
-                            dialog.window?.setBackgroundDrawableResource(
-                                android.R.color.transparent
-                            )
+                            val dialogView = layoutInflater.inflate(R.layout.dialog_editar_atv, null)
+                            val dialog = AlertDialog.Builder(this@GetAtvActivity).setView(dialogView).create()
+                            dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
                             dialog.show()
 
                             val btnSalvar = dialogView.findViewById<TextView>(R.id.btnSalvarDialog)
@@ -166,42 +129,21 @@ class GetAtvActivity : AppCompatActivity() {
                                 val tipo = editTipo.text.toString().trim()
                                 val dificuldade = editDificuldade.text.toString().trim()
                                 val resposta = editResposta.text.toString().trim()
-                                if (
-                                    titulo.isEmpty() ||
-                                    tipo.isEmpty() ||
-                                    dificuldade.isEmpty() ||
-                                    resposta.isEmpty()
-                                ) {
-                                    mostrarMensagem(
-                                        "Preencha todos os campos!"
-                                    )
-
+                                if (titulo.isEmpty() || tipo.isEmpty() || dificuldade.isEmpty() || resposta.isEmpty()) {
+                                    mostrarMensagem("Preencha todos os campos!")
                                     return@setOnClickListener
                                 }
-
                                 val novosDados = mapOf(
-
                                     "titulo" to titulo,
-
                                     "tipo" to tipo,
-
                                     "dificuldade" to dificuldade,
-
                                     "respostaCorreta" to resposta
                                 )
 
-                                atividade?.id?.let { id ->
-
-                                    database
-                                        .getReference("atividades")
-                                        .child(id)
-                                        .updateChildren(novosDados)
-
-                                    mostrarMensagem(
-                                        "Atividade atualizada!"
-                                    )
+                                atividade?.id?.let {
+                                        id ->database.getReference("atividades").child(id).updateChildren(novosDados)
+                                    mostrarMensagem("Atividade atualizada!")
                                 }
-
                                 dialog.dismiss()
                             }
                         }
@@ -219,15 +161,13 @@ class GetAtvActivity : AppCompatActivity() {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-
-                    mostrarMensagem(
-                        "Erro: ${error.message}"
-                    )
+                    mostrarMensagem("Erro: ${error.message}")
                 }
             })
 
         btnVoltar.setOnClickListener {
             finish()
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
     }
 }

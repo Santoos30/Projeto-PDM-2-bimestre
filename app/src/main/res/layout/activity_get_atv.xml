@@ -101,7 +101,7 @@
                         android:padding="8dp"
                         android:shadowColor="#004d41"
                         android:shadowRadius="7"
-                        android:text="Nome"
+                        android:text="Titulo"
                         android:textAlignment="center"
                         android:textColor="#00A88F"
                         android:textSize="23sp"
@@ -112,7 +112,7 @@
                         android:shadowColor="#004d41"
                         android:shadowRadius="7"
                         android:textAlignment="center"
-                        android:text="Idade"
+                        android:text="Matéria"
                         android:textColor="#00A88F"
                         android:textSize="23sp"
                         android:textStyle="bold" />

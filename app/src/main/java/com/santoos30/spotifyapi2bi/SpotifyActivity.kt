@@ -20,7 +20,6 @@ class SpotifyActivity : AppCompatActivity() {
 
     private lateinit var btnPlay: ImageView
     private var spotifyUrl: String? = null
-
     private lateinit var txtNome: TextView
     private lateinit var txtArtista: TextView
     private lateinit var imgAlbum: ImageView
@@ -46,7 +45,6 @@ class SpotifyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_spotify)
-
         txtNome = findViewById(R.id.txtNome)
         txtArtista = findViewById(R.id.txtArtista)
         imgAlbum = findViewById(R.id.imgAlbum)
@@ -59,8 +57,8 @@ class SpotifyActivity : AppCompatActivity() {
 
         btnVoltar.setOnClickListener {
             finish()
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
-
         btnBuscar.setOnClickListener {
             val musica = editPesquisa.text.toString()
 
@@ -68,7 +66,6 @@ class SpotifyActivity : AppCompatActivity() {
                 mostrarMensagem("Digite uma música!")
                 return@setOnClickListener
             }
-
             SpotifyAuth.getToken { token ->
                 if (token != null) {
                     buscarMusica(token, musica)
@@ -101,29 +98,23 @@ class SpotifyActivity : AppCompatActivity() {
             "Bearer $token",
             musica
         ).enqueue(object : Callback<SpotifyResponse> {
-
             override fun onResponse(
                 call: Call<SpotifyResponse>,
                 response: Response<SpotifyResponse>
             ) {
                 if (response.isSuccessful) {
                     val track = response.body()?.tracks?.items?.getOrNull(0)
-
                     runOnUiThread {
                         if (track == null) {
                            mostrarMensagem("Nenhuma música encontrada!",)
                             return@runOnUiThread
                         }
-
                         txtNome.text = track.name
                         txtArtista.text = track.artists[0].name
-
                         Glide.with(this@SpotifyActivity)
                             .load(track.album.images[0].url)
                             .into(imgAlbum)
-
                         spotifyUrl = track.external_urls.spotify
-
                         btnPlay.isEnabled = true
                     }
                 } else {

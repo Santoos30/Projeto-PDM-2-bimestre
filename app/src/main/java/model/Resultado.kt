@@ -7,6 +7,5 @@ data class Resultado(
     var atividadeId: String? = null,
     var atividadeTitulo: String? = null,
     var respostaRecebida: String? = null,
-    var acertou: Boolean = false,
-    var data: Long = 0
+    var acertou: Boolean = false
 )

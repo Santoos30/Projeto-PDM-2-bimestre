@@ -2,7 +2,6 @@ package com.santoos30.spotifyapi2bi
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,73 +23,49 @@ class HomeActivity : AppCompatActivity() {
         btnVoltar.setOnClickListener{
             val Login = Intent(this, LoginActivity::class.java)
             startActivity(Login)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela1.setOnClickListener {
             val Tela1 = Intent(this, PostCrianActivity::class.java)
             startActivity(Tela1)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela2.setOnClickListener {
             val Tela2 = Intent(this, GetCrianActivity::class.java)
             startActivity (Tela2)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela3.setOnClickListener {
             val Tela3 = Intent(this, PostAtvActivity::class.java)
             startActivity (Tela3)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela4.setOnClickListener {
             val Tela4 = Intent(this, FazerAtvActivity::class.java)
             startActivity (Tela4)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela5.setOnClickListener {
             val Tela5 = Intent(this, GetAtvActivity::class.java)
             startActivity (Tela5)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela6.setOnClickListener {
             val Tela6 = Intent(this, HistoricoActivity::class.java)
             startActivity (Tela6)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
 
         BtnTela7.setOnClickListener {
             val Tela7 = Intent(this, SpotifyActivity::class.java)
             startActivity(Tela7)
-            overridePendingTransition(
-                R.anim.slide_in,
-                R.anim.slide_out
-            )
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
         }
     }
 }

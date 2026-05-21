@@ -35,22 +35,25 @@ class PostAtvActivity : AppCompatActivity() {
         setContentView(R.layout.activity_post_atv)
         database = FirebaseDatabase.getInstance()
 
-        val editTitulo     = findViewById<EditText>(R.id.TituloAtv)
-        val editTipo       = findViewById<EditText>(R.id.MateriaAtv)
+        val editTitulo      = findViewById<EditText>(R.id.TituloAtv)
+        val editTipo        = findViewById<EditText>(R.id.MateriaAtv)
         val editDificuldade = findViewById<EditText>(R.id.DifAtv)
-        val editResposta   = findViewById<EditText>(R.id.RespostaAtv)
-        val btnSalvar      = findViewById<Button>(R.id.CriarAtv)
-        val btnVoltar      = findViewById<ImageView>(R.id.btnVoltar)
+        val editResposta    = findViewById<EditText>(R.id.RespostaAtv)
+        val btnSalvar       = findViewById<Button>(R.id.CriarAtv)
+        val btnVoltar       = findViewById<ImageView>(R.id.btnVoltar)
 
-        btnVoltar.setOnClickListener { finish() }
+        btnVoltar.setOnClickListener {
+            finish()
+            overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
+        }
 
         btnSalvar.setOnClickListener {
-            val titulo     = editTitulo.text.toString().trim()
-            val tipo       = editTipo.text.toString().trim()
+            val titulo      = editTitulo.text.toString().trim()
+            val materia        = editTipo.text.toString().trim()
             val dificuldade = editDificuldade.text.toString().trim()
-            val resposta   = editResposta.text.toString().trim()
+            val resposta    = editResposta.text.toString().trim()
 
-            if (titulo.isEmpty() || tipo.isEmpty() || resposta.isEmpty()) {
+            if (titulo.isEmpty() || materia.isEmpty() || resposta.isEmpty()) {
                 mostrarMensagem("Preencha todos os campos!")
                 return@setOnClickListener
             }
@@ -59,13 +62,12 @@ class PostAtvActivity : AppCompatActivity() {
             val atividade = Atividade(
                 id = id,
                 titulo = titulo,
-                tipo = tipo,
+                tipo = materia,
                 dificuldade = dificuldade,
                 respostaCorreta = resposta
             )
             database.getReference("atividades").child(id).setValue(atividade)
             mostrarMensagem("Atividade salva!")
-            finish()
         }
     }
 }

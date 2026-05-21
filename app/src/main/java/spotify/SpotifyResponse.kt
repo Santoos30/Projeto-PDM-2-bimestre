@@ -9,13 +9,9 @@ data class Tracks(
 )
 
 data class Track(
-
     val name: String,
-
     val artists: List<Artist>,
-
     val album: Album,
-
     val external_urls: ExternalUrls
 )
 
