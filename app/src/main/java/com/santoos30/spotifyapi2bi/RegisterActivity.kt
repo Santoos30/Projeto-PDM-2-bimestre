@@ -110,14 +110,25 @@ class RegisterActivity : AppCompatActivity() {
                     val telaHome = Intent(this, HomeActivity::class.java)
                     startActivity(telaHome)
                     finish()
-                    overridePendingTransition(
-                        R.anim.zoom_in,
-                        R.anim.zoom_out
-                    )
+                    overridePendingTransition(R.anim.zoom_in, R.anim.zoom_out)
                 } else {
-                    mostrarMensagem(
-                        "Erro ao cadastrar:\n${task.exception?.message}"
-                    )
+                    val mensagemErro = when {
+                        task.exception?.message?.contains("badly formatted", ignoreCase = true) == true -> {
+                            "O email digitado é inválido!"
+                        }
+                        task.exception?.message?.contains("password should be at least", ignoreCase = true) == true -> {
+                            "A senha deve ter pelo menos 6 caracteres!"
+                        }
+                        task.exception?.message?.contains("email address is already in use", ignoreCase = true) == true -> {
+                            "Esse email já está cadastrado!"
+                        }
+                        task.exception?.message?.contains("network error", ignoreCase = true) == true -> {
+                            "Sem conexão com a internet!"
+                        }
+                    else -> {
+                        "Erro ao cadastrar. Tente novamente!"
+                        }
+                    }
                 }
             }
     }
